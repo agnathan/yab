@@ -1,0 +1,19 @@
+<% for post in @posts %>
+  <div id="post_id_<%=post.id%>" class="post">
+    <h2><%=h post.title %></h2>
+    <div id="post_created_at_<%= post.id %>" class="post_created_at">
+      <%= time_ago_in_words(post.created_at) %> ago
+    </div>
+    <div id="post_<%= post.id %>" class="post_body">
+      <%=h post.body %>
+    </div>
+    <% if current_user %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if current_user %>
+  <%= link_to 'New post', new_post_path %>
+<% end %>

@@ -1,0 +1,44 @@
+<%# <form action="/search/" id="search" class="box">%>
+<%# <div>%>
+<%#   <input name="cx" value="009154124372827730432:rih67ql96yo" type="hidden">%>
+<%#   <input name="cof" value="FORID:9" type="hidden">%>
+<%#   <input name="ie" value="UTF-8" type="hidden">%>
+<%#   <input value="Search…" class="text help" name="q" size="25" type="text">%>
+<%#   <input class="submit" name="sa" value="Search" type="submit">%>
+<%# </div>%>
+<%# </form>%>
+
+<% if current_user %>
+  <p id='user_logged_in'>Welcome, <%= current_user.login %>
+    (<%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>)
+  </p>
+  <%= link_to "My Account", account_path %>
+<% end -%>
+
+<div id="most-viewed" class="box menu">
+
+  <h2>Lastest Posts</h2>
+    <ul>
+      <% @recent_posts.each do |p| %>
+        <li><%= link_to p.title, p %></li>
+      <% end %>
+    </ul>
+  </div><!-- #most-viewed-essay -->
+        <div id="featured-essay" class="box">
+
+<%#   <h2>Featured Essay:</h2>%>
+<%# %>
+<%#   <h3>Twelve Virtues of Rationality</h3>%>
+<%# %>
+<%#   <p>The first virtue is curiosity. A burning itch to know is higher than a solemn vow to pursue truth. To feel the burning itch of curiosity requires both that you be ignorant, and that you desire to relinquish your ignorance.<br>%>
+<%# <a href="/rational/virtues">Read More</a>%>
+<%# </p></div><!-- #featured-essay -->%>
+
+<div id="subscribe-rss" class="box">
+  <a href="/subscribe" class="feed" title="Subscribe">
+    <img src="/images/rss-icon.gif" alt="Atom Feed">
+    <span class="title">Subscribe</span>
+    <span class="info">Subscribe now</span>
+  </a>
+</div><!-- #subscribe-rss -->
+        

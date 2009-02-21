@@ -55,4 +55,12 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+  # Sidebar
+
+  before_filter :recent_posts
+
+  def recent_posts
+    @recent_posts = Post.find(:all, :order => "created_at DESC", :limit => 5)
+  end
+
 end
